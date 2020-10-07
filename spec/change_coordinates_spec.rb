@@ -50,5 +50,18 @@ describe ChangeCoordinates do
         expect(subject.new(data).run).to eq(false)
       end
     end
+
+    context 'when the input file is invalid' do
+      let!(:data) { 'X' }
+
+      before do
+        allow(File).to receive(:open).and_return(true)
+        allow(File).to receive(:read).and_return(data)
+      end
+
+      it 'fail and return false' do
+        expect(subject.new(data).run).to eq(false)
+      end
+    end
   end
 end
