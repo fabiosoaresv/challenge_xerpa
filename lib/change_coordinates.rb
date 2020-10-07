@@ -1,12 +1,21 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 class ChangeCoordinates
+  INVALID_PARAMS = 'Invalid params (data or file)'
+  INVALID_FINAL_POSITION = 'Invalid final position'
+
   def initialize(params)
     @data = params
     @file = File.open(params).read if params.match(/csv|txt/)
   end
 
   def run
+    if @data && @data.size < 3 || @file && @file.size < 3
+      puts INVALID_PARAMS
+      return INVALID_PARAMS
+    end
+
     execute_file_or_data(@file) if @file
     execute_file_or_data(@data)
   end
@@ -28,7 +37,7 @@ class ChangeCoordinates
       result << update_coordinate(x, y, direction, commands, upland)
     end
 
-    return false if result.include?(false) || result.empty?
+    return INVALID_FINAL_POSITION if result.include?(false) || result.empty?
 
     result.each do |row|
       puts row.join(' ').to_s
@@ -148,6 +157,7 @@ end
 
 # initialize object
 change = ChangeCoordinates.new(ARGV[0])
+
 system("echo ''")
 puts 'Result:'
-result = change.run
+change.run;
