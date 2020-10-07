@@ -28,7 +28,7 @@ class ChangeCoordinates
       result << update_coordinate(x, y, direction, commands, upland)
     end
 
-    return false if result.include?(false)
+    return false if result.include?(false) || result.empty?
 
     result.each do |row|
       puts row.join(' ').to_s
