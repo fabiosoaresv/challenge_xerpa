@@ -8,6 +8,28 @@ class ChangeCoordinates
 
   private
 
+  def execute_file_or_data(data_or_file)
+    result = []
+    read_data(data_or_file)
+    set_upland
+
+    upland = [@upland_x, @upland_y]
+
+    group_space_probes.each do |coordinate, commands|
+      x = coordinate.split[0]
+      y = coordinate.split[1]
+      direction = coordinate.split[2]
+
+      result << update_coordinate(x, y, direction, commands, upland)
+    end
+
+    return false if result.include?(false)
+
+    result.each do |row|
+      puts row.join(' ').to_s
+    end
+  end
+
   def read_data(data_or_file)
     @read_data = data_or_file.gsub(/\n/, ',').split(',').reject { |d| d.empty? }
   end
