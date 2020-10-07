@@ -18,4 +18,17 @@ class ChangeCoordinates
   def group_space_probes
     @read_data.flatten.drop(1).each_slice(2).to_a
   end
+
+  def turn_left(direction)
+    case direction
+    when 'N'
+      'W'
+    when 'S'
+      'E'
+    when 'W'
+      'S'
+    when 'E'
+      'N'
+    end
+  end
 end
