@@ -39,7 +39,7 @@ describe ChangeCoordinates do
       end
 
       it 'fail and return false' do
-        expect(subject.new(data).run).to eq(false)
+        expect(subject.new(data).run).to eq(ChangeCoordinates::INVALID_FINAL_POSITION)
       end
     end
 
@@ -47,7 +47,7 @@ describe ChangeCoordinates do
       let!(:data) { 'X' }
 
       it 'fail and return false' do
-        expect(subject.new(data).run).to eq(false)
+        expect(subject.new(data).run).to eq(ChangeCoordinates::INVALID_PARAMS)
       end
     end
 
@@ -60,7 +60,7 @@ describe ChangeCoordinates do
       end
 
       it 'fail and return false' do
-        expect(subject.new(data).run).to eq(false)
+        expect(subject.new(data).run).to eq(ChangeCoordinates::INVALID_PARAMS)
       end
     end
   end
