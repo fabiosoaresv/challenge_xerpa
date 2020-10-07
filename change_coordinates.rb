@@ -118,6 +118,34 @@ class ChangeCoordinates
   end
 end
 
+# set a simple helper xD
+  def helper
+    return puts '
+      ===================== CHANGE COORDINATES SPACE PROBES =========================
+      | To run script you need to set a data of upland, actual position and commands |
+      | Example:                                                                     |
+      | ruby change_coordinate.rb "                                                  |
+      | 5 5                                                                          |
+      | 1 2 N                                                                        |
+      | LMLMLMLMM                                                                    |
+      | 3 3 E                                                                        |
+      | MMRMMRMRRM"                                                                  |
+      |                                                                              |
+      | Note 1: You can use a file with extension csv or txt to run. Example:        |
+      | ruby change_coordinate.rb file.csv                                           |
+      | Or...                                                                        |
+      | ruby change_coordinate.rb file.txt                                           |
+      |                                                                              |
+      | Note 2: The file net to be exactly like first example.                       |
+      |                                                                              |
+      | @author: fabiosoaresv                                                        |
+      | @email: fabiosoares@outlook.com.br                                           |
+      ================================================================================
+    '
+  end
+
+  return helper if ARGV[0] == '--help'
+
 # initialize object
 change = ChangeCoordinates.new(ARGV[0])
 system("echo ''")
