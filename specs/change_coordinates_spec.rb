@@ -30,5 +30,17 @@ describe ChangeCoordinates do
         expect(subject.new(file_or_data).run).to match_array(result)
       end
     end
+
+    context 'when space probe exceds the limit of upland' do
+      let!(:data) do
+        '5 5
+        5 5 N
+        LMLMLMLMM'
+      end
+
+      it 'fail and return false' do
+        expect(subject.new(data).run).to eq(false)
+      end
+    end
   end
 end
