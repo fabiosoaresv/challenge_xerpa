@@ -24,7 +24,7 @@ Então resumidamente o funcionamento é:
 Fiz também os specs para validar se tudo o que está sendo dito acima estava funcional. :) 
 
 #### Requisitos
-`ruby 2.6.3`
+`ruby 2.6.3`<br>
 `git`
 
 #### Setup
@@ -43,10 +43,21 @@ Caso queira rodar os specs é necessário rodar `bundle install` antes.
 
 - Exemplo:
 ```console
-[ 8:18AM ]  [ fsoares@pyhooma:~/Documents/challenge_xerpa(main✗) ]
+[  1:28PM ]  [ fsoares@pyhooma:~/Documents/projects/xerpa_teste(master✗) ]
  $ bundle exec rspec spec/change_coordinates_spec.rb
-Finished in 0.01137 seconds (files took 0.0893 seconds to load)
-3 examples, 0 failures
+
+Result:
+1 3 N
+5 1 E
+.1 3 N
+5 1 E
+..Invalid params (data or file)
+.Invalid params (data or file)
+.
+
+Finished in 0.00753 seconds (files took 0.07235 seconds to load)
+5 examples, 0 failures
+
 ```
 
 #### Utilizando o script
@@ -99,4 +110,31 @@ MMRMMRMRRM"
 Result:
 1 3 N
 5 1 E
+```
+
+- Exemplo de como utilizar o helper
+```console
+[  1:28PM ]  [ fsoares@pyhooma:~/Documents/projects/xerpa_teste(master✗) ]
+ $ ruby lib/change_coordinates.rb --help
+
+      ===================== CHANGE COORDINATES SPACE PROBES =========================
+      | To run script you need to set a data of upland, actual position and commands |
+      | Example:                                                                     |
+      | ruby change_coordinate.rb "                                                  |
+      | 5 5                                                                          |
+      | 1 2 N                                                                        |
+      | LMLMLMLMM                                                                    |
+      | 3 3 E                                                                        |
+      | MMRMMRMRRM"                                                                  |
+      |                                                                              |
+      | Note 1: You can use a file with extension csv or txt to run. Example:        |
+      | ruby change_coordinate.rb file.csv                                           |
+      | Or...                                                                        |
+      | ruby change_coordinate.rb file.txt                                           |
+      |                                                                              |
+      | Note 2: The file net to be exactly like first example.                       |
+      |                                                                              |
+      | @author: fabiosoaresv                                                        |
+      | @email: fabiosoares@outlook.com.br                                           |
+      ================================================================================
 ```
