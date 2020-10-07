@@ -14,4 +14,8 @@ class ChangeCoordinates
     @upland_x = @read_data[0].split(' ')[0].to_i
     @upland_y = @read_data[0].split(' ')[1].to_i
   end
+
+  def group_space_probes
+    @read_data.flatten.drop(1).each_slice(2).to_a
+  end
 end
