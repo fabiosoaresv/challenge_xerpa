@@ -6,6 +6,11 @@ class ChangeCoordinates
     @file = File.open(params).read if params.match(/csv|txt/)
   end
 
+  def run
+    execute_file_or_data(@file) if @file
+    execute_file_or_data(@data)
+  end
+
   private
 
   def execute_file_or_data(data_or_file)
