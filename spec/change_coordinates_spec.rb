@@ -42,5 +42,13 @@ describe ChangeCoordinates do
         expect(subject.new(data).run).to eq(false)
       end
     end
+
+    context 'when the input data is invalid' do
+      let!(:data) { 'X' }
+
+      it 'fail and return false' do
+        expect(subject.new(data).run).to eq(false)
+      end
+    end
   end
 end
