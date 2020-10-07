@@ -3,6 +3,26 @@
 #### Escopo (resumo)
 Criar um script que interprete uma sonda em um planalto em Marte, e que o mesmo receba dados ou um arquivo, e a partir destes dados a sonda irá se locomover nas posições norte, sul, leste, oeste, virar para esquerda ou direita e andar para frente.
 
+#### Solução aplicada
+Optei em focar no escopo do desafio em interpretar uma entrada, processar e devolver a saída, preferi deixar tudo em uma única classe já que haveria apenas esses processamentos de dados, e deixar os métodos o mais claro possível para ter uma compreensão fácil do processamento e cada ação para chegar ao resultado. 
+
+Deixando então uma leitura de código centralizada e simples para o problema, sem segmentar em outras classes, etc.
+
+Então resumidamente o funcionamento é:
+- Um método principal (`run`), que processa a entrada de dados ou um aquivo (txt/csv), e caso esteja de acordo dispara a ação de execução do arquivo/dados (`execute_file_or_data`).
+- Os métodos privados, onde processa cada etapa e teremos:
+```
+0. Inicialização da classe com a devida validação dos parâmetros.
+1. A leitura dos dados e a devida estruturação dos mesmos. (read_data)
+2. A inicialização do tamanho planalto. (set_upland)
+3. O agrupamento de todas as naves. (group_space_probes)
+4. A atualização da posição de cada nave com as coordenadas/direção/movimentação do input. (update_coordinate, turn_left, turn_right, go_ahead)
+5. A validação da posição final  da nave considerando o tamanho do planalto. (final_position_is_invalid)
+6. Um helper simples.
+7. E no final do script, a inicialização da classe com os parâmetros e a exibição do resultado final da posição da nave.
+```
+Fiz também os specs para validar se tudo o que está sendo dito acima estava funcional. :) 
+
 #### Requisitos
 `ruby 2.6.3`
 `git`
