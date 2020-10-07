@@ -19,6 +19,27 @@ class ChangeCoordinates
     @read_data.flatten.drop(1).each_slice(2).to_a
   end
 
+  def update_coordinate(x, y, direction, commands, upland)
+    commands = commands.split('')
+    @final_direction = direction
+    @final_x = x
+    @final_y = y
+
+    commands.each do |command|
+      if command  == 'M'
+        request = go_ahead(@final_x, @final_y, @final_direction)
+        @final_x = request[:x]
+        @final_y = request[:y]
+      elsif command == 'L'
+        @final_direction = turn_left(@final_direction)
+      elsif command == 'R'
+        @final_direction = turn_right(@final_direction)
+      end
+    end
+
+    [@final_x, @final_y, @final_direction]
+  end
+
   def turn_left(direction)
     case direction
     when 'N'
