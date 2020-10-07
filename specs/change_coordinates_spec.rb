@@ -19,5 +19,16 @@ describe ChangeCoordinates do
         expect(subject.new(file_or_data).run).to match_array(result)
       end
     end
+
+    context 'when csv initialize script and' do
+      before do
+        allow(File).to receive(:open).and_return(true)
+        allow(File).to receive(:read).and_return(file_or_data)
+      end
+
+      it 'return results' do
+        expect(subject.new(file_or_data).run).to match_array(result)
+      end
+    end
   end
 end
