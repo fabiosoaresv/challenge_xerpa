@@ -37,6 +37,8 @@ class ChangeCoordinates
       end
     end
 
+    return false if final_position_is_invalid?(upland[0], upland[1], @final_x, @final_y)
+
     [@final_x, @final_y, @final_direction]
   end
 
@@ -80,5 +82,9 @@ class ChangeCoordinates
     when 'E'
       { x: x + 1, y: y }
     end
+  end
+
+  def final_position_is_invalid?(upland_x, upland_y, x, y)
+    x > upland_x || y > upland_y
   end
 end
