@@ -9,4 +9,9 @@ class ChangeCoordinates
   def read_data(data_or_file)
     @read_data = data_or_file.gsub(/\n/, ',').split(',').reject { |d| d.empty? }
   end
+
+  def set_upland
+    @upland_x = @read_data[0].split(' ')[0].to_i
+    @upland_y = @read_data[0].split(' ')[1].to_i
+  end
 end
