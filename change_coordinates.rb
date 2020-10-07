@@ -31,4 +31,17 @@ class ChangeCoordinates
       'N'
     end
   end
+
+  def turn_right(direction)
+    case direction
+    when 'N'
+      'E'
+    when 'S'
+      'W'
+    when 'W'
+      'N'
+    when 'E'
+      'S'
+    end
+  end
 end
