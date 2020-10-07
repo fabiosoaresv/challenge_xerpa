@@ -44,4 +44,20 @@ class ChangeCoordinates
       'S'
     end
   end
+
+  def go_ahead(x, y, direction)
+    x = x.to_i
+    y = y.to_i
+
+    case direction
+    when 'N'
+      { x: x, y: y + 1 }
+    when 'S'
+      { x: x, y: y - 1 }
+    when 'W'
+      { x: x - 1, y: y }
+    when 'E'
+      { x: x + 1, y: y }
+    end
+  end
 end
