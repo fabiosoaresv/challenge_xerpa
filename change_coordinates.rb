@@ -117,3 +117,9 @@ class ChangeCoordinates
     x > upland_x || y > upland_y
   end
 end
+
+# initialize object
+change = ChangeCoordinates.new(ARGV[0])
+system("echo ''")
+puts 'Result:'
+result = change.run
