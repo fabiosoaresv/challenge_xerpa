@@ -62,7 +62,7 @@ class ChangeCoordinates
     @final_direction = direction
     @final_x = x
     @final_y = y
-
+    array_flags = []
     commands.each do |command|
       if command  == 'M'
         request = go_ahead(@final_x, @final_y, @final_direction)
@@ -72,12 +72,14 @@ class ChangeCoordinates
         @final_direction = turn_left(@final_direction)
       elsif command == 'R'
         @final_direction = turn_right(@final_direction)
+      elsif command == 'F'
+        array_flags << [" Flag: #{x}, #{y}"]
       end
     end
 
     return false if final_position_is_invalid?(upland[0], upland[1], @final_x, @final_y)
 
-    [@final_x, @final_y, @final_direction]
+    [@final_x, @final_y, @final_direction, array_flags.flatten]
   end
 
   def turn_left(direction)

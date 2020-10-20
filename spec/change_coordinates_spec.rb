@@ -31,6 +31,21 @@ describe ChangeCoordinates do
       end
     end
 
+    context 'when data initialize script and have flags' do
+      let!(:file_with_flags) do
+        '5 5
+        1 2 N
+        FLMLMLMLMM'
+      end
+      let!(:result_with_flags) do
+        [[1, 3, "N", [" Flag: 1, 2"]]]
+      end
+
+      it 'return results' do
+        expect(subject.new(file_with_flags).run).to match_array(result_with_flags)
+      end
+    end
+
     context 'when space probe exceds the limit of upland' do
       let!(:data) do
         '5 5
