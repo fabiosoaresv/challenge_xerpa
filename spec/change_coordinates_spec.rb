@@ -11,7 +11,7 @@ describe ChangeCoordinates do
       MMRMMRMRRM'
     end
     let!(:result) do
-      [[1, 3, "N"], [5, 1, "E"]]
+      [[1, 3, "N", []], [5, 1, "E", []]]
     end
 
     context 'when data initialize script and' do
